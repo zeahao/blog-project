@@ -18,18 +18,16 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '18'
+        cache: 'npm'
         
-    - name: Clear npm cache
-      run: npm cache clean --force
+    - name: Clear node_modules
+      run: rm -rf node_modules package-lock.json
       
-    - name: Install dependencies
+    - name: Install dependencies on Linux
       run: npm install --legacy-peer-deps
       
-    - name: Make node_modules executable
-      run: chmod -R +x node_modules/.bin/
-      
     - name: Build
-      run: npx vite build --base=/blog-project/
+      run: npm run build:gh-pages
       
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
