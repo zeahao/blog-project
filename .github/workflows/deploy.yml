@@ -18,12 +18,14 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '18'
-        cache: 'npm'
         
     - name: Clear node_modules
-      run: rm -rf node_modules package-lock.json
+      run: rm -rf node_modules
       
-    - name: Install dependencies on Linux
+    - name: Generate lock file on Linux
+      run: npm install --package-lock-only --legacy-peer-deps
+      
+    - name: Install dependencies
       run: npm install --legacy-peer-deps
       
     - name: Build
