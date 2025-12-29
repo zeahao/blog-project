@@ -5,13 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "./node_modules/.bin/vite build",
-    "vercel-build": "./node_modules/.bin/vite build",
-    "build:clean": "rm -rf dist && ./node_modules/.bin/vite build",
-    "build:gh-pages": "./node_modules/.bin/vite build --base=/blog-project/",
+    "build": "npm exec vite build",
+    "vercel-build": "npm exec vite build",
+    "build:clean": "rm -rf dist && npm exec vite build",
+    "build:gh-pages": "npm exec vite build -- --base=/blog-project/",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "./node_modules/.bin/vite preview",
-    "deploy": "npm run build:gh-pages && ./node_modules/.bin/gh-pages -d dist"
+    "preview": "npm exec vite preview",
+    "deploy": "npm run build:gh-pages && npm exec gh-pages -d dist"
   },
   "dependencies": {
     "react": "^18.2.0",
