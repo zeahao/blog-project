@@ -30,11 +30,9 @@ jobs:
       - name: Install dependencies
         run: |
           npm ci
-          npm install vite@^4.5.0 --save-dev
       - name: Build
         run: |
-          npm install -g vite@4.5.14
-          vite build --base=/blog-project/
+          npm run build:gh-pages
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
